@@ -1,0 +1,9 @@
+# 术语源配置（可插拔）。新增源只需追加一项并实现对应 parser。
+sources:
+  - id: runoob-ai-agent
+    name: 菜鸟教程 AI Agent 教程
+    url: https://www.runoob.com/ai-agent/ai-agent-tutorial.html
+    parser: runoob_ai_agent
+    enabled: true
+    # 抓取频率（cron 表达式由调度层决定，这里仅作文档提示）
+    cadence: weekly

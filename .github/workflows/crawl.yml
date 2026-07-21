@@ -1,0 +1,87 @@
+name: crawl-ai-jargon
+
+# 定时巡检：每周一 09:17 UTC 抓取术语源，更新 data/terms.json 并部署 + 通知
+on:
+  schedule:
+    - cron: "17 9 * * 1"
+  workflow_dispatch: {}   # 支持手动触发
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  issues: write          # 用于新术语自动建单通知
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: pip install -q -r crawler/requirements.txt
+      - name: Run collector
+        run: python crawler/collect.py
+      - name: Show diff
+        if: always()
+        run: cat data/diff.json || echo "diff.json 不存在，跳过"
+
+      # —— 通知：diff 非空时自动建 GitHub Issue 提醒新增/变更术语与候选新词 ——
+      - name: Notify new terms (GitHub Issue)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, subprocess, sys
+          diff = json.load(open('data/diff.json', encoding='utf-8'))
+          added = diff.get('added', [])
+          changed = diff.get('changed', [])
+          cand = diff.get('candidateCount', 0)
+          if not (added or changed or cand):
+              print("无新增/变更，跳过通知")
+              sys.exit(0)
+          lines = ["## AI 黑话术语库更新", ""]
+          if added:
+              lines += [f"### 🆕 新增术语 ({len(added)})"] + [f"- `{a}`" for a in added]
+          if changed:
+              lines += [f"### ✏️ 变更术语 ({len(changed)})"] + [f"- `{c}`" for c in changed]
+          if cand:
+              lines += [f"### 🔍 候选新词 ({cand}) —— 待人工确认（见 data/candidates.json）"]
+          body = "\n".join(lines)
+          title = f"AI 黑话更新 {diff.get('generatedAt','')[:10]}"
+          r = subprocess.run(
+              ["gh", "issue", "create", "--title", title, "--body", body,
+               "--label", "ai-jargon-bot"],
+              capture_output=True, text=True)
+          print(r.stdout or r.stderr)
+          # 备选：若需 webhook 通知，可在此用 curl 调用 NOTIFY_WEBHOOK（在仓库 Secrets 配置）
+          # if webhook := '${{ secrets.NOTIFY_WEBHOOK }}':
+          #     requests.post(webhook, json={"text": body})
+          PY
+
+      - name: Commit updated terms
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/terms.json data/candidates.json data/diff.json
+          if git diff --cached --quiet; then
+            echo "无变化，跳过提交"
+          else
+            git commit -m "chore: 定时更新 AI 黑话术语库 [skip ci]"
+            git push
+          fi
+
+      # —— 部署静态 Check Sheet 到 GitHub Pages ——
+      - name: Prepare site
+        run: mkdir -p public_site && cp public/index.html public_site/ && cp data/terms.json public_site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public_site
+      - uses: actions/deploy-pages@v4
+        id: deploy

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 黑话 Check Sheet · 行业术语自测清单</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --panel:#ffffff; --ink:#1f2329; --sub:#646a73;
+    --line:#e5e6eb; --brand:#4f46e5; --brand-soft:#eef2ff;
+    --ok:#16a34a; --ok-soft:#ecfdf3; --shadow:0 1px 3px rgba(0,0,0,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;}
+  header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);padding:14px 20px;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  h1{font-size:20px;margin:0 0 4px}
+  .meta{color:var(--sub);font-size:13px}
+  .bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:12px 0 4px}
+  .bar>span{display:block;height:100%;background:var(--brand);width:0;transition:width .3s}
+  .progress-txt{font-size:13px;color:var(--sub)}
+  .tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0}
+  input[type=search]{flex:1;min-width:200px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;
+    font-size:14px;background:#fff;}
+  button{cursor:pointer;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 14px;
+    font-size:13px;color:var(--ink);transition:.15s}
+  button:hover{border-color:var(--brand);color:var(--brand)}
+  button.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .cat{margin:18px 0}
+  .cat h2{font-size:15px;margin:0 0 8px;display:flex;align-items:center;gap:8px;cursor:pointer}
+  .cat h2 .cnt{font-size:12px;color:var(--sub);font-weight:400}
+  .cat h2 .caret{margin-left:auto;font-size:12px;color:var(--sub);transition:transform .15s}
+  .cat.collapsed h2 .caret{transform:rotate(-90deg)}
+  .cat.collapsed .grid{display:none}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow);
+    transition:.15s}
+  .card.done{border-color:var(--ok);background:var(--ok-soft)}
+  .card .top{display:flex;align-items:flex-start;gap:10px}
+  .card input[type=checkbox]{width:18px;height:18px;margin-top:3px;accent-color:var(--ok);cursor:pointer}
+  .card .name{font-weight:600;font-size:15px}
+  .card .zh{color:var(--sub);font-size:12px}
+  .card .def{font-size:13px;color:#3a3f47;margin-top:8px}
+  .card .foot{margin-top:10px;display:flex;justify-content:space-between;align-items:center}
+  .card a{font-size:12px;color:var(--brand);text-decoration:none}
+  .card a:hover{text-decoration:underline}
+  .pill{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--brand-soft);color:var(--brand)}
+  .empty{color:var(--sub);text-align:center;padding:40px}
+  .note-input{width:100%;margin-top:8px;border:1px dashed var(--line);border-radius:8px;padding:6px 8px;font-size:12px;display:none}
+  .card.done .note-input{display:block}
+  footer{color:var(--sub);font-size:12px;text-align:center;padding:30px 0}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>🤖 AI 黑话 Check Sheet</h1>
+    <div class="meta" id="meta">加载中…</div>
+    <div class="bar"><span id="barFill"></span></div>
+    <div class="progress-txt" id="progressTxt"></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tools">
+    <input type="search" id="search" placeholder="搜索黑话 / 中文 / 释义…" />
+    <button id="expandAll">展开全部</button>
+    <button id="collapseAll">收起全部</button>
+    <button id="exportMd">导出 Markdown</button>
+    <button id="exportJson">导出 JSON</button>
+    <button id="reset">重置勾选</button>
+  </div>
+  <div id="list"></div>
+  <div class="empty" id="empty" style="display:none">没有匹配的术语。</div>
+</div>
+
+<footer>数据由定时爬虫从公开术语源聚合生成 · 勾选状态仅保存在本机浏览器</footer>
+
+<script>
+const LS_KEY = "ai-jargon-checks";
+const TERM_URL = "./terms.json";
+let DATA = { terms: [], categories: [] };
+let CHECKS = loadChecks();
+
+function loadChecks(){
+  try { return JSON.parse(localStorage.getItem(LS_KEY) || "{}"); }
+  catch { return {}; }
+}
+function saveChecks(){ localStorage.setItem(LS_KEY, JSON.stringify(CHECKS)); }
+
+function setCheck(id, val, note){
+  if(!CHECKS[id]) CHECKS[id] = {};
+  CHECKS[id].checked = val;
+  CHECKS[id].checkedAt = val ? new Date().toISOString() : null;
+  if(note !== undefined) CHECKS[id].note = note;
+  saveChecks();
+  refreshProgress();
+}
+
+async function boot(){
+  try {
+    const res = await fetch(TERM_URL, { cache: "no-store" });
+    DATA = await res.json();
+  } catch (e) {
+    document.getElementById("meta").textContent =
+      "无法加载 terms.json：请通过静态服务器访问（如 python -m http.server），不要直接双击打开文件。";
+    return;
+  }
+  render();
+  refreshProgress();
+}
+
+function render(){
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+  let shown = 0, total = 0;
+  for (const cat of DATA.categories){
+    const terms = DATA.terms.filter(t => t.category === cat);
+    if (!terms.length) continue;
+    const filtered = terms.filter(t => !q ||
+      (t.term+" "+(t.termZh||"")+" "+(t.definition||"")).toLowerCase().includes(q));
+    if (!filtered.length) continue;
+    shown += filtered.length; total += terms.length;
+
+    const sec = document.createElement("div");
+    sec.className = "cat";
+    const h2 = document.createElement("h2");
+    h2.innerHTML = `${cat} <span class="cnt">(${filtered.length}/${terms.length})</span><span class="caret">▾</span>`;
+    h2.addEventListener("click", () => sec.classList.toggle("collapsed"));
+    sec.appendChild(h2);
+
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    for (const t of filtered){
+      grid.appendChild(card(t));
+    }
+    sec.appendChild(grid);
+    list.appendChild(sec);
+  }
+  document.getElementById("empty").style.display = shown ? "none" : "block";
+  const gen = DATA.generatedAt ? new Date(DATA.generatedAt).toLocaleString() : "—";
+  document.getElementById("meta").textContent =
+    `共 ${DATA.terms.length} 个术语 · 数据更新于 ${gen} · 来源：${(DATA.sources||[]).map(s=>s.name).join("、")||"—"}`;
+}
+
+function card(t){
+  const c = document.createElement("div");
+  const done = !!(CHECKS[t.id] && CHECKS[t.id].checked);
+  c.className = "card" + (done ? " done" : "");
+  const st = CHECKS[t.id] || {};
+  c.innerHTML = `
+    <div class="top">
+      <input type="checkbox" ${done?"checked":""} />
+      <div>
+        <div class="name">${esc(t.term)}</div>
+        ${t.termZh?`<div class="zh">${esc(t.termZh)}</div>`:""}
+      </div>
+    </div>
+    <div class="def">${esc(t.definition||"")}</div>
+    <input class="note-input" placeholder="加个备注…" value="${esc(st.note||"")}" />
+    <div class="foot">
+      <span class="pill">${esc(t.category)}</span>
+      ${t.sourceUrl?`<a href="${esc(t.sourceUrl)}" target="_blank" rel="noopener">来源 ↗</a>`:""}
+    </div>`;
+  const cb = c.querySelector("input[type=checkbox]");
+  cb.addEventListener("change", () => {
+    setCheck(t.id, cb.checked);
+    c.className = "card" + (cb.checked ? " done" : "");
+  });
+  const note = c.querySelector(".note-input");
+  note.addEventListener("change", () => setCheck(t.id, cb.checked, note.value));
+  return c;
+}
+
+function refreshProgress(){
+  const total = DATA.terms.length;
+  const done = DATA.terms.filter(t => CHECKS[t.id] && CHECKS[t.id].checked).length;
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById("barFill").style.width = pct + "%";
+  document.getElementById("progressTxt").textContent =
+    `已掌握 ${done} / ${total}（${pct}%）`;
+}
+
+function esc(s){ return String(s??"").replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m])); }
+
+function exportMarkdown(){
+  const lines = ["# 我的 AI 黑话图谱", ""];
+  let n=0;
+  for (const cat of DATA.categories){
+    const terms = DATA.terms.filter(t => t.category===cat && CHECKS[t.id] && CHECKS[t.id].checked);
+    if(!terms.length) continue;
+    lines.push(`## ${cat}`, "");
+    for (const t of terms){
+      lines.push(`- **${t.term}**${t.termZh?`（${t.termZh}）`:""}：${t.definition||""}`);
+      const st = CHECKS[t.id];
+      if (st.note) lines.push(`  - 备注：${st.note}`);
+      n++;
+    }
+    lines.push("");
+  }
+  lines.push(`> 已掌握 ${n} 个术语。`);
+  download("ai-jargon-mine.md", lines.join("\n"), "text/markdown");
+}
+function exportJson(){
+  const out = {};
+  for (const t of DATA.terms){
+    if (CHECKS[t.id] && CHECKS[t.id].checked) out[t.id] = CHECKS[t.id];
+  }
+  download("ai-jargon-checks.json", JSON.stringify(out, null, 2), "application/json");
+}
+function download(name, content, type){
+  const blob = new Blob([content], { type });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name; a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+document.getElementById("search").addEventListener("input", render);
+document.getElementById("exportMd").addEventListener("click", exportMarkdown);
+document.getElementById("exportJson").addEventListener("click", exportJson);
+document.getElementById("reset").addEventListener("click", () => {
+  if (confirm("确定清空本机所有勾选记录？")) { CHECKS = {}; saveChecks(); render(); refreshProgress(); }
+});
+document.getElementById("expandAll").addEventListener("click", () => {
+  document.querySelectorAll(".cat").forEach(s => s.classList.remove("collapsed"));
+});
+document.getElementById("collapseAll").addEventListener("click", () => {
+  document.querySelectorAll(".cat").forEach(s => s.classList.add("collapsed"));
+});
+
+boot();
+</script>
+</body>
+</html>

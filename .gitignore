@@ -1,0 +1,11 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# 本地覆盖（若需本地私有源可放这里，不入库）
+data/terms.local.json
+
+# 构建产物：部署时由 workflow / 本地脚本从 data/ 拷贝，无需入库
+public/terms.json
+public/diff.json
