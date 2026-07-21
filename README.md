@@ -2,7 +2,7 @@
 
 访问地址：https://lq920320.github.io/ai-jargon-checklist/ 
 
-![页面截图](docs/check_sheet.png)
+![页面截图](https://github.com/user-attachments/assets/c6dd6eed-1561-41db-a383-dcd276c3f70f)
 
 一个**定时巡检行业术语、可勾选自测**的 AI 黑话清单项目。
 
