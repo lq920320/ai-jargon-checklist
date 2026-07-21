@@ -1,18 +1,6 @@
 {
-  "generatedAt": "2026-07-20T07:43:50.767011+00:00",
-  "added": [
-    "promptengineering",
-    "contextengineering",
-    "chainofthought",
-    "react",
-    "reflection",
-    "mcp",
-    "a2a",
-    "reasoningmodel",
-    "distillation",
-    "multimodal",
-    "agenticloopengineering"
-  ],
+  "generatedAt": "2026-07-21T03:51:51.195510+00:00",
+  "added": [],
   "removed": [],
   "changed": [],
   "candidateCount": 3,
