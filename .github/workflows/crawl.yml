@@ -19,8 +19,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Install deps
@@ -80,8 +80,8 @@ jobs:
       # —— 部署静态 Check Sheet 到 GitHub Pages ——
       - name: Prepare site
         run: mkdir -p public_site && cp public/index.html public_site/ && cp data/terms.json public_site/
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: public_site
-      - uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v5
         id: deploy
