@@ -1,10 +1,22 @@
 {
-  "generatedAt": "2026-10-12T00:56:43.208563+00:00",
+  "generatedAt": "2026-10-18T23:53:58.948355+00:00",
   "added": [],
   "removed": [
-    "qoderwork"
+    "metagpt",
+    "langgraph",
+    "openaiagentssdk",
+    "dspy",
+    "semantickernel",
+    "mastra",
+    "agnophidata",
+    "camelai",
+    "atomicagents",
+    "llamaindex",
+    "pydanticai",
+    "haystackagent",
+    "swarms"
   ],
   "changed": [],
-  "candidateCount": 3,
-  "totalTerms": 39
+  "candidateCount": 0,
+  "totalTerms": 26
 }
