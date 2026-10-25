@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-18T23:53:58.948355+00:00",
+  "generatedAt": "2026-10-25T23:47:03.046693+00:00",
   "sources": [
     {
       "id": "runoob-ai-agent",
@@ -28,10 +28,10 @@
       "termZh": "智能体",
       "category": "Agent 基础",
       "definition": "能感知环境、决策并执行动作以达成目标的智能程序。核心公式：Agent = LLM(大脑) + Planning(规划) + Tool use(执行) + Memory(记忆)。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -40,10 +40,10 @@
       "termZh": "大语言模型",
       "category": "Agent 基础",
       "definition": "Large Language Model，驱动 Agent 的「大脑」，负责理解与生成自然语言。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -52,10 +52,10 @@
       "termZh": "提示词",
       "category": "Agent 基础",
       "definition": "给模型的输入指令，决定模型如何理解与完成任务；提示工程是引导模型行为的关键手段。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -67,7 +67,7 @@
       "source": "glossary-seed",
       "sourceUrl": "",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -76,10 +76,10 @@
       "termZh": "规划",
       "category": "规划 Planning",
       "definition": "Agent 将目标拆解为可执行步骤、并随反馈动态调整策略的能力。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -88,10 +88,10 @@
       "termZh": "工具调用",
       "category": "工具 Tool",
       "definition": "Agent 调用外部 API、代码或系统资源来完成任务的能力，是「动手干活」的关键。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -103,7 +103,7 @@
       "source": "glossary-seed",
       "sourceUrl": "",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -112,10 +112,10 @@
       "termZh": "记忆",
       "category": "记忆 Memory",
       "definition": "Agent 保存与检索历史上下文（短期/长期）的能力，使其具备连续性与个性化。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -124,10 +124,10 @@
       "termZh": "多智能体",
       "category": "多智能体 Multi-Agent",
       "definition": "多个 Agent 分工协作、通过角色扮演或任务分解共同完成复杂目标。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -136,10 +136,10 @@
       "termZh": "交接",
       "category": "多智能体 Multi-Agent",
       "definition": "一个 Agent 把当前任务/上下文移交给另一个更合适的 Agent 继续处理（如 OpenAI Agents SDK）。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -148,10 +148,10 @@
       "termZh": "编排",
       "category": "多智能体 Multi-Agent",
       "definition": "对多个 Agent、工具与流程进行统一调度与协调，形成可控的执行链路。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -160,10 +160,10 @@
       "termZh": "工作流",
       "category": "框架 Frameworks",
       "definition": "把多个步骤/节点按确定或动态逻辑串起来执行的流程，是 Agent 应用常见组织方式。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -172,10 +172,10 @@
       "termZh": "检索增强生成",
       "category": "检索增强 RAG",
       "definition": "Retrieval-Augmented Generation，先检索外部知识再让模型生成，缓解幻觉、接入私有知识。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -187,7 +187,7 @@
       "source": "glossary-seed",
       "sourceUrl": "",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -196,10 +196,10 @@
       "termZh": "向量数据库",
       "category": "检索增强 RAG",
       "definition": "专门存储与检索向量的数据库（如 Milvus / pgvector），支撑 RAG 的相似度搜索。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-18",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -208,10 +208,10 @@
       "termZh": "提示词工程",
       "category": "提示与上下文",
       "definition": "通过设计、结构与迭代优化给大模型的输入（指令、示例、角色、格式约束）来稳定引导模型产出期望结果的技术；早期驾驭 LLM 的主要手段，正逐步演进为上下文工程。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -220,10 +220,10 @@
       "termZh": "上下文工程",
       "category": "提示与上下文",
       "definition": "在推理时动态组织并注入模型所需的全部上下文（指令、记忆、检索结果、工具描述、状态），以替代单纯靠提示词堆砌；被认为是构建可靠 Agent 的关键工程能力。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -235,7 +235,7 @@
       "source": "glossary-seed",
       "sourceUrl": "",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -244,10 +244,10 @@
       "termZh": "推理+行动",
       "category": "提示与上下文",
       "definition": "Reasoning + Acting 范式，让 Agent 交替进行\"思考（推理下一步）\"与\"行动（调用工具）\"，并基于观察结果迭代，是主流 Agent 执行框架的基础。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -259,7 +259,7 @@
       "source": "glossary-seed",
       "sourceUrl": "",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -271,7 +271,7 @@
       "source": "glossary-seed",
       "sourceUrl": "",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -283,7 +283,7 @@
       "source": "glossary-seed",
       "sourceUrl": "",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -295,7 +295,7 @@
       "source": "glossary-seed",
       "sourceUrl": "",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -307,7 +307,7 @@
       "source": "glossary-seed",
       "sourceUrl": "",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -316,10 +316,10 @@
       "termZh": "多模态",
       "category": "模型与训练",
       "definition": "模型同时理解与生成文本、图像、音频、视频等多种模态信息的能力。",
-      "source": "glossary-seed",
-      "sourceUrl": "",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://www.runoob.com/ai-agent/ai-agent-tutorial.html",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
       "status": "active"
     },
     {
@@ -331,7 +331,163 @@
       "source": "glossary-seed",
       "sourceUrl": "",
       "firstSeen": "2026-07-20",
-      "lastSeen": "2026-10-18",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "openaiagentssdk",
+      "term": "OpenAI Agents SDK",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "轻量级 Agent 开发框架",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/openai/openai-agents-python",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "langgraph",
+      "term": "LangGraph",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "状态机式 Agent 编排",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/langchain-ai/langgraph",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "llamaindex",
+      "term": "LlamaIndex",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "RAG + Agent 框架",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/run-llama/llama_index",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "semantickernel",
+      "term": "Semantic Kernel",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "企业级 Agent 编排",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/microsoft/semantic-kernel",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "pydanticai",
+      "term": "PydanticAI",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "类型安全 Agent 开发",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/pydantic/pydantic-ai",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "mastra",
+      "term": "Mastra",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "现代全栈 Agent 框架",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/mastra-ai/mastra",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "agnophidata",
+      "term": "Agno（原 Phidata）",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "多 Agent 应用框架",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/agno-agi/agno",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "camelai",
+      "term": "Camel-AI",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "多智能体协作框架",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/camel-ai/camel",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "metagpt",
+      "term": "MetaGPT",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "软件公司模拟框架",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/FoundationAgents/MetaGPT",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "swarms",
+      "term": "Swarms",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "Agent 集群编排",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/kyegomez/swarms",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "haystackagent",
+      "term": "Haystack Agent",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "搜索与知识增强 Agent",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/deepset-ai/haystack",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "atomicagents",
+      "term": "Atomic Agents",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "可组合 Agent 架构",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/BrainBlend-AI/atomic-agents",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
+      "status": "active"
+    },
+    {
+      "id": "dspy",
+      "term": "DSPy",
+      "termZh": "",
+      "category": "框架 Frameworks",
+      "definition": "声明式 Prompt / Agent 框架",
+      "source": "runoob-ai-agent",
+      "sourceUrl": "https://github.com/stanfordnlp/dspy",
+      "firstSeen": "2026-10-25",
+      "lastSeen": "2026-10-25",
       "status": "active"
     }
   ]

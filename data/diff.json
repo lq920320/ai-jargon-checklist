@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-10-18T23:53:58.948355+00:00",
-  "added": [],
-  "removed": [
-    "metagpt",
-    "langgraph",
+  "generatedAt": "2026-10-25T23:47:03.046693+00:00",
+  "added": [
     "openaiagentssdk",
-    "dspy",
+    "langgraph",
+    "llamaindex",
     "semantickernel",
+    "pydanticai",
     "mastra",
     "agnophidata",
     "camelai",
-    "atomicagents",
-    "llamaindex",
-    "pydanticai",
+    "metagpt",
+    "swarms",
     "haystackagent",
-    "swarms"
+    "atomicagents",
+    "dspy"
   ],
+  "removed": [],
   "changed": [],
-  "candidateCount": 0,
-  "totalTerms": 26
+  "candidateCount": 3,
+  "totalTerms": 39
 }
