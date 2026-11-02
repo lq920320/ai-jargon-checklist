@@ -1,20 +1,6 @@
 {
-  "generatedAt": "2026-10-25T23:47:03.046693+00:00",
-  "added": [
-    "openaiagentssdk",
-    "langgraph",
-    "llamaindex",
-    "semantickernel",
-    "pydanticai",
-    "mastra",
-    "agnophidata",
-    "camelai",
-    "metagpt",
-    "swarms",
-    "haystackagent",
-    "atomicagents",
-    "dspy"
-  ],
+  "generatedAt": "2026-11-02T01:14:05.648145+00:00",
+  "added": [],
   "removed": [],
   "changed": [],
   "candidateCount": 3,
